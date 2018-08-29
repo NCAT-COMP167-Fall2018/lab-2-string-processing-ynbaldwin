@@ -35,15 +35,31 @@ public class Lab2StringProcessing {
                 String number = line[4];
                 String email = line[5];
                 
-                record[currIndex]= String.format(" ");
+                if(genderIsValid(gender)){
+                    
+                     record[currIndex]= String.format(" ");
+                } else{
+                    System.out.println(String.format(" "));
+                }
                 currIndex++;
+                
                 String output;
-                output = String.format("%-20s%-20s%-10s%10s%20s%40s",firstName,lastName,gender,age,number,email);
-                    System.out.println(output);
+                   output = String.format("%-20s%-20s%-10s%10s%20s%40s",firstName,lastName,gender,age,number,email);
+                    
+                System.out.println(output);
             }
         } catch (FileNotFoundException ex) {
             System.err.println("Input file not found");
         }
     }
-    
+
+          private static boolean genderIsValid(String gender){
+              if(gender.trim().equalsIgnoreCase("male")){
+                  return true;
+              }else if (gender.trim().equalsIgnoreCase("female")){
+                  return true;
+              }
+           return false;
+          }
 }
+
